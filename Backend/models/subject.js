@@ -5,10 +5,9 @@ const subjectSchema = new mongoose.Schema({
     name: { type: String, required: true },
     department: { type: String, required: true },
     semester: { type: Number, required: true },
-    weekly_load: {
-        theory: { type: Number, required: true },
-        lab: { type: Number, required: true }
-    },
+    
+    theory: { type: Number, default: 0 },
+    lab: { type: Number, default: 0 },
     assignedTeacher: { type: mongoose.Schema.Types.ObjectId, ref: "Teacher", default: null }, // Changed from assignedTeachers array to single assignedTeacher
 });
 

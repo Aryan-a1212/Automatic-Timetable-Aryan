@@ -8,6 +8,8 @@ const teacherSchema = new mongoose.Schema({
 
   // pehle slot assigned
   assigned_slot: { type: String, default: null },
+  // And here we are getting the data statically which we have to changeto dynamic allotment as in getting the datapointed in another schema
+  
 
   // fir 5 subject preferences
   subject_preferences: {
@@ -19,6 +21,18 @@ const teacherSchema = new mongoose.Schema({
       message: "Exactly 5 subject preferences required"
     },
     required: true
+  },
+
+  weekly_schedule: {
+    type: Object,
+    default: {
+        Monday: [{ period: { type: Number, default: null }, subject: { type: mongoose.Schema.Types.ObjectId, ref: "Subject", default: null }, room: { type: String, default: null } }],
+        Tuesday: [{ period: { type: Number, default: null }, subject: { type: mongoose.Schema.Types.ObjectId, ref: "Subject", default: null }, room: { type: String, default: null } }],
+        Wednesday: [{ period: { type: Number, default: null }, subject: { type: mongoose.Schema.Types.ObjectId, ref: "Subject", default: null }, room: { type: String, default: null } }],
+        Thursday: [{ period: { type: Number, default: null }, subject: { type: mongoose.Schema.Types.ObjectId, ref: "Subject", default: null }, room: { type: String, default: null } }],
+        Friday: [{ period: { type: Number, default: null }, subject: { type: mongoose.Schema.Types.ObjectId, ref: "Subject", default: null }, room: { type: String, default: null } }],
+        Saturday: [{ period: { type: Number, default: null }, subject: { type: mongoose.Schema.Types.ObjectId, ref: "Subject", default: null }, room: { type: String, default: null } }]
+    }
   }
 });
 
